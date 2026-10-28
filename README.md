@@ -29,11 +29,11 @@ Discord may suspend your access to quests if they detect abnormal activity.
 
 ## Installation
 
-This is a custom plugin for a Vencord build from source. The following steps are intended only for a controlled testing environment, subject to the disclaimer above.
+This is a custom plugin for a Vencord build from source.
 
-1. Copy the `QuestSpooferButton` folder into `src/userplugins/` in your Vencord source tree.
-2. Rebuild your Vencord test build.
-3. Enable **SpoofQuests** in Vencord's plugin settings and configure `showNotifications`.
+1. Pull this repository into `src/userplugins/`.
+2. Quit Discord, rebuild Vencord and inject the new build into your client.
+3. Enable **QuestSpoofer** in Vencord's plugin settings and configure the desired options.
 4. With eligible quests already accepted in the test environment, open the Quests page and click **Spoof Active Quests**.
 
 ## Notes
