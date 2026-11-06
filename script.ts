@@ -54,8 +54,33 @@ export default async function runScript() {
     let QuestsStore = Object.values(wpRequire.c).find(x => x?.exports?.A?.__proto__?.getQuest).exports.A;
     // @ts-ignore
     let ChannelStore = Object.values(wpRequire.c).find(x => x?.exports?.A?.__proto__?.getAllThreadsForParent).exports.A;
-    // @ts-ignore
-    let GuildChannelStore = Object.values(wpRequire.c).find(x => x?.exports?.Ay?.getSFWDefaultChannel).exports.Ay;
+    function findExportByMethod(methodName: string) {
+        for (const mod of Object.values(wpRequire.c)) {
+            // @ts-ignore
+            const exports = mod?.exports;
+
+            if (!exports) continue;
+
+            // Check whether the module exports the store directly
+            if (typeof exports[methodName] === "function") {
+                return exports;
+            }
+
+            // Check individual named exports
+            for (const value of Object.values(exports)) {
+                if (value && typeof value[methodName] === "function") {
+                    return value;
+                }
+            }
+        }
+
+        console.error(`Could not find export containing method: ${methodName}`);
+        return null;
+    }
+    let GuildChannelStore = findExportByMethod("getSFWDefaultChannel");
+    if (!GuildChannelStore) {
+        throw new Error("GuildChannelStore could not be located. Discord's internal module may have changed.");
+    }
     // @ts-ignore
     let FluxDispatcher = Object.values(wpRequire.c).find(x => x?.exports?.h?.__proto__?.flushWaitQueue).exports.h;
     // @ts-ignore
