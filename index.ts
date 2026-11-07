@@ -2,10 +2,12 @@ import definePlugin from "@utils/types";
 
 import Settings from "./settings";
 import runScript from "./script";
+import { checkForUpdates } from "./updateChecker";
 
 const BUTTON_ID = "vencord-quest-script-button";
 
-const pluginName = "QuestSpoofer";
+const spacedPluginName = "Quest Spoofer";
+const pluginName = spacedPluginName.replaceAll(" ", "");
 
 let observer: MutationObserver | null = null;
 let syncScheduled = false;
@@ -153,11 +155,15 @@ export default definePlugin({
     description: "Adds a button to the Quests page that allows you to automatically complete active quests." +
         "You must activate the quests in order for them to be completed." +
         "The button should be located next to the sorting and filtering buttons.",
-    authors: [{ name: "David2379", id: 681245724691660828n },  { name: "Afonso", id: 1552890680475652157n }],
+authors: [{ name: "David2379", id: 681245724691660828n },  { name: "Afonso", id: 1552890680475652157n }],
     settings: Settings,
 
     start() {
         console.log(`[${pluginName}] Started`);
+
+        if (Settings.store.checkForUpdates) {
+            checkForUpdates(spacedPluginName);
+        }
 
         syncButton();
 

@@ -16,16 +16,17 @@ Discord may suspend your access to quests if they detect abnormal activity.
 
 ## Settings
 
-| Setting | Description | Default  |
-| --- |------------------------------------------------------------|----------|
+| Setting | Description | Default |
+| --- | --- | --- |
+| `checkForUpdates` | Check for updates to the plugin on startup. | Enabled |
 | `blockMultipleInstances` | Prevent multiple instances of the plugin from running at the same time for the same user. | Disabled |
-| `showMainNotifications` | Show main notifications about the plugin's actions. | Enabled  |
-| `showStartNotifications` | Show notifications everytime a quest starts being spoofed. | Enabled  |
-| `showFinishNotifications` | Show notifications everytime a quest is finished. | Enabled  |
-| `showErrorNotifications` | Show a notification when an error occurs. | Enabled  |
+| `showMainNotifications` | Show main notifications about the plugin's actions. | Enabled |
+| `showStartNotifications` | Show notifications everytime a quest starts being spoofed. | Enabled |
+| `showFinishNotifications` | Show notifications everytime a quest is finished. | Enabled |
+| `showErrorNotifications` | Show a notification when an error occurs. | Enabled |
 
 - Turn off notifications if you want to avoid popups, nothing else is affected.
-- It is recommended to keep the `showMainNotifications` and `showErrorNotifications` options enabled.
+- It is recommended to keep the `checkForUpdates`, `showMainNotifications` and `showErrorNotifications` options enabled.
 
 ## Installation
 
